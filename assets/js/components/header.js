@@ -1,6 +1,6 @@
 let headerHTML = '<a href="/" class="logo">';
 headerHTML += '<strong>Jack</strong>';
-headerHTML += '<span>let\'s get to know him</span>';
+headerHTML += '<span>It\'s nice to meet me</span>';
 headerHTML += '</a>';
 headerHTML += '<nav>';
 headerHTML += '<a href="#menu">Menu</a>';
