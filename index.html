@@ -7,11 +7,14 @@
 <html lang="en">
 	<head>
 		<title>Jack's Page</title>
-		<link rel="import" href="./assets/js/components/constants/head.html">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="assets/css/main.css">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+		<link rel="stylesheet" href="/assets/css/main.css">
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css"></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -23,15 +26,10 @@
 
 				<!-- Menu -->
 					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
+						<ul class="links" id="menu-links"></ul>
 						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<li><a href="/" class="button primary fit">Get Started</a></li>
+							<!-- <li><a href="#" class="button fit">Log In</a></li> -->
 						</ul>
 					</nav>
 
@@ -46,7 +44,7 @@
 								and released under the Creative Commons.</p> -->
 								<p>A place for me to share my side projects and side thoughts.</p>
 								<ul class="actions">
-									<li><a href="#one" class="button next scrolly">Let's Check It Out</a></li>
+									<li><a href="#one" class="button next scrolly">Get Started</a></li>
 								</ul>
 							</div>
 						</div>
@@ -59,41 +57,41 @@
 							<section id="one" class="tiles">
 								<article>
 									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
+										<img src="images/pic01.jpg" alt="">
 									</span>
 									<header class="major">
-										<h3><a href="landing.html" class="link">Aliquam</a></h3>
-										<p>Ipsum dolor sit amet</p>
+										<h3><a href="why.html" class="link">But Why?</a></h3>
+										<p>Why did you even do this?</p>
 									</header>
 								</article>
 								<article>
 									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
+										<img src="images/pic02.jpg" alt="">
 									</span>
 									<header class="major">
-										<h3><a href="landing.html" class="link">Tempus</a></h3>
-										<p>feugiat amet tempus</p>
+										<h3><a href="./pages/highschool.html" class="link">High School</a></h3>
+										<p>Where my story really starts</p>
 									</header>
 								</article>
 								<article>
 									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
+										<img src="images/pic03.jpg" alt="">
 									</span>
 									<header class="major">
-										<h3><a href="landing.html" class="link">Magna</a></h3>
-										<p>Lorem etiam nullam</p>
+										<h3><a href="./pages/visualizations/first.html" class="link">My first Viz</a></h3>
+										<p>I knew dashboards, but then I went a step further</p>
 									</header>
 								</article>
 								<article>
 									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
+										<img src="images/pic04.jpg" alt="">
 									</span>
 									<header class="major">
-										<h3><a href="landing.html" class="link">Ipsum</a></h3>
-										<p>Nisl sed aliquam</p>
+										<h3><a href="./pages/notepad.html" class="link">Notepad++ Extension</a></h3>
+										<p>How I made life easier for SEMOSSO users</p>
 									</header>
 								</article>
-								<article>
+								<!-- <article>
 									<span class="image">
 										<img src="images/pic05.jpg" alt="" />
 									</span>
@@ -110,11 +108,11 @@
 										<h3><a href="landing.html" class="link">Etiam</a></h3>
 										<p>Feugiat amet tempus</p>
 									</header>
-								</article>
+								</article> -->
 							</section>
 
 						<!-- Two -->
-							<section id="two">
+							<!-- <section id="two">
 								<div class="inner">
 									<header class="major">
 										<h2>Massa libero</h2>
@@ -124,7 +122,7 @@
 										<li><a href="landing.html" class="button next">Get Started</a></li>
 									</ul>
 								</div>
-							</section>
+							</section> -->
 
 					</div>
 
@@ -138,17 +136,18 @@
 
 		<!-- Scripts -->
 			
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<!-- Components -->
-			<script src="assets/js/components/footer.js"></script>
-			<script src="assets/js/components/header.js"></script>
-			<script src="assets/js/components/contact.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+"
+			<script src="/assets/js/components/footer.js"></script>
+			<script src="/assets/js/components/header.js"></script>
+			<script src="/assets/js/components/contact.js"></script>
+			<script src="/assets/js/components/menu.js"></script>
 
 	</body>
 </html>

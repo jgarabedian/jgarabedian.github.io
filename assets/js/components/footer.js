@@ -8,10 +8,10 @@ footerHTML += '<li><a target="_blank" href="https://www.instagram.com/jack_garab
 footerHTML += '<li><a target="_blank" href="https://github.com/jgarabedian/" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>';
 footerHTML += '<li><a target="_blank" href="https://www.linkedin.com/in/jgarabedian/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>';
 footerHTML += '</ul>';
-footerHTML += '<ul class="copyright">';   
-footerHTML += '<li>&copy; Untitled</li>';
-footerHTML += '<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>';
-footerHTML += '</ul>';
+// footerHTML += '<ul class="copyright">';   
+// footerHTML += '<li>&copy; Untitled</li>';
+// footerHTML += '<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>';
+// footerHTML += '</ul>';
 footerHTML += '</div>';
 
 document.getElementById('footer').innerHTML = footerHTML;

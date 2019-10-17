@@ -1,4 +1,4 @@
-let headerHTML = '<a href="index.html" class="logo">';
+let headerHTML = '<a href="/" class="logo">';
 headerHTML += '<strong>Jack</strong>';
 headerHTML += '<span>let\'s get to know him</span>';
 headerHTML += '</a>';

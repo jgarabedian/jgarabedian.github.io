@@ -1,0 +1,31 @@
+/* Start Scatter */
+
+#scatter {
+    width: 100%;
+    background-color: var(--main-color-2);
+    padding-bottom: 5vh;
+    min-height: 70vh;
+}
+
+#scatter svg {
+    width: 98%;
+    border: 1px solid var(--main-color-4);
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 1%;
+}
+
+.tooltip {
+    position: absolute;
+    font-size: 12px;
+    width:  auto;
+    height: auto;
+    pointer-events: none;
+    background-color: white;
+}
+
+.tooltip-dimensions {
+    font-weight: bold;;
+}
+
+/* End Scatter */

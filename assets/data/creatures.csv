@@ -1,0 +1,16 @@
+Creature,Mass,RestingHeartRate,Longevity
+Human,90000,60,70
+Cat,2000,150,15
+Small dog,2000,100,10
+Medium dog,5000,90,15
+Large dog,8000,75,17
+Hamster,60,450,3
+Chicken,1500,275,15
+Monkey,5000,190,15
+Horse,1200000,44,40
+Cow,800000,65,22
+Pig,150000,70,25
+Rabbit,1000,205,9
+Elephant,5000000,30,70
+Giraffe,900000,65,20
+Large whale,120000000,20,80
