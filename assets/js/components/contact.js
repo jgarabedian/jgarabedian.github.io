@@ -1,7 +1,7 @@
 let contactHTML = '';
 contactHTML += '<div class="inner">';
 contactHTML += '<section>';
-contactHTML += '<form method="POST" action="https://formspree.io/jgarabedian96@gmail.com">';
+contactHTML += '<form method="POST" target="_blank" action="https://formspree.io/jgarabedian96@gmail.com">';
 contactHTML += '<div class="fields">';
 contactHTML += '<div class="field half">';
 contactHTML += '<label for="name">Name</label>';
