@@ -1,0 +1,22 @@
+#dashboard iframe {
+    width: 100%;
+    height: 70vh;
+}
+
+.loadingGif {
+    /* height: calc(100vh - 125px); */
+    width: 100%;
+}
+
+.gifHolder {
+    /* margin-left: 33%;
+    margin-top: 13%; */
+    position: relative;
+    top: 35%;
+    left: 45%;
+}
+
+.gifHolder img {
+    width: auto;
+    height: auto;
+}

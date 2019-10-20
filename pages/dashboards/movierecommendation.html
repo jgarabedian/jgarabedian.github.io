@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+
+<head>
+    <title>Jack's Page</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/pages/dashboards/movierecommendation.css">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/noscript.css">
+    </noscript>
+
+
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header"></header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <ul class="links" id="menu-links"></ul>
+            <ul class="actions stacked">
+                <li><a href="/" class="button primary fit">Get Started</a></li>
+                <!-- <li><a href="#" class="button fit">Log In</a></li> -->
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main" class="alt">
+
+            <!-- One -->
+            <section id="one">
+                <div class="inner">
+                    <header class="major">
+                        <h1>Movie Recommendation Dashboard</h1>
+                    </header>
+                    <span class="image main"><img src="/images/avengers2.jpg" alt=""></span>
+                    <p>To showcase SEMOSS at the Strata Data Conference, I was responsible for utilizing the connect 
+                        to API feature. In doing this, I made it my goal to make it somewhat interesting, and what is 
+                        more interesting than movies? I'm a big movie fan myself, so I decided to make a dashboard 
+                        centered around my interests.
+                    </p>
+                    <p>The data flow might be the most interesting part of this dashboard. First, I utilize SEMOSS text 
+                        input field to allow a user to type in a movie. From there, I encode the input to send to the 
+                        <a href="https://tastedive.com" target="_blank">Taste Dive API</a> to get a list of movies related 
+                        to the input (which I then put in a word cloud). At the same time, I take that same input and run 
+                        it through the <a href="https://developer.nytimes.com/" target="_blank">New York Times API</a> 
+                        to get the NYT Review of said movie.
+                    </p>
+                    <p>One of the issues I ran into was that access is limited to the Taste Dive API that I was trying 
+                        to use. To avoid this during the conference, I gathered 10 different access keys from people 
+                        on the team and proceeded to loop through each one on 'execute' to spread out which keys 
+                        hit the API. If you start not to see new results, I recommend opening up my page in Incognito 
+                        and you might see better results. Check it out below!
+                    </p>
+                    <div id="dashboard">
+                        <div id="iframeLoading">
+                            <div class="gifHolder"><img class="loadingGif" src="/images/DoubleRingLoading.svg"></div>
+                        </div>
+                        <iframe id="iframeHolder" onload="hideLoading()"
+                            src="https://play.semoss.org/strata/SemossWeb/#!/insight?type=multi&amp;engine=c3164ad4-4c50-4519-a265-e05a329bbda7&amp;id=65ab4e82-e514-4a0f-a686-aee8029d77ff"
+                            style="display: none;"></iframe>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- Contact -->
+        <section id="contact"></section>
+
+        <!-- Footer -->
+        <footer id="footer"></footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/pages/loading.js"></script>
+
+    <!-- load in components -->
+    <script src="/assets/js/components/footer.js"></script>
+    <script src="/assets/js/components/header.js"></script>
+    <script src="/assets/js/components/contact.js"></script>
+    <script src="/assets/js/components/menu.js"></script>
+
+</body>
+
+</html>
