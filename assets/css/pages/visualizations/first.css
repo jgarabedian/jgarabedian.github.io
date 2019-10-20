@@ -17,7 +17,7 @@
 
 .tooltip {
     position: absolute;
-    font-size: 12px;
+    font-size: 15px;
     width:  auto;
     height: auto;
     pointer-events: none;
@@ -26,6 +26,10 @@
 
 .tooltip-dimensions {
     font-weight: bold;;
+}
+
+.tooltip-dimensions b {
+    font-weight: bolder;
 }
 
 /* End Scatter */

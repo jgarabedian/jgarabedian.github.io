@@ -68,9 +68,11 @@ function paint() {
             // var color = colorScale(d.manufacturer);
             color = '#8DACC6';
             color2 = 'black';
-            var html = "<span class='tooltip-dimensions' style='color:" + color + ";'>" + d.Creature + "</span><br>" +
-                "<span style='color:" + color2 + ";'>" + d.Mass + " Grams, " + d.RestingHeartRate +
-                " bpm, " + d.Longevity + " Years</span>";
+            var html = "<span class='tooltip-dimensions' style='color:" + color + ";'>" +
+                "<b style='color:" + color + ";'>" + d.Creature + "</b></span><br>" +
+                "<span style='color:" + color2 + ";'><b style='color:" + color2 + ";'>" +
+                d.Mass + "</b> Grams, <b style='color:" + color2 + ";'>" + d.RestingHeartRate +
+                "</b> bpm, <b style='color:" + color2 + ";'>" + d.Longevity + "</b> Years</span>";
 
             tooltip.html(html)
                 .style("left", (d3.event.pageX + 15) + "px")
