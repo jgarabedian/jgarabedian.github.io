@@ -7,6 +7,10 @@
     min-height: 70vh;
 }
 
+#scatter circle:hover {
+    cursor: crosshair;
+}
+
 .tooltip {
     position: absolute;
     font-size: 15px;
