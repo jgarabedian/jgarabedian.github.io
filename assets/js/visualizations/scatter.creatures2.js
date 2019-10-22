@@ -1,6 +1,7 @@
 // This will be the default color
 var color1 = 'rgba(141, 172, 198, 1)',
-    backgroundColor = 'rgba(218, 209, 210, 1)';
+    backgroundColor = 'rgba(218, 209, 210, 1)',
+    textColor = 'black';
 let pickr = null;
 let el = document.createElement('p');
 let theme = 'classic';
@@ -59,6 +60,13 @@ pickr2 = new Pickr(Object.assign({
     default: backgroundColor
 }, config));
 
+pickrTextContainer = document.querySelector('.text-pickr');
+pickrTextContainer.appendChild(el);
+let pickrText = new Pickr(Object.assign({
+    el, theme,
+    default: 'black'
+}, config))
+
 pickr.on('save', (color, instance) => {
     console.log('save', color, instance);
     console.log(instance._color.toRGBA().toString());
@@ -71,6 +79,13 @@ pickr2.on('save', (color, instance) => {
     console.log(instance._color.toRGBA().toString());
     backgroundColor = instance._color.toRGBA().toString();
     pickr2.hide();
+    paint();
+});
+
+pickrText.on('save', (color, instance) => {
+    console.log(instance._color.toRGBA().toString());
+    textColor = instance._color.toRGBA().toString();
+    pickrText.hide();
     paint();
 });
 
@@ -100,10 +115,6 @@ function paint() {
         var x = d3.scaleLinear()
             .domain([0, 0])
             .range([0, width]);
-        
-        // svg.append("g")
-        //     .attr("transform", "translate(0," + height + ")")
-        //     .call(d3.axisBottom(x));
         
         
         svg.append("text")
@@ -144,12 +155,12 @@ function paint() {
 
         var tipMouseover = function (d) {
             // var color = colorScale(d.manufacturer);
-            color2 = 'black';
+            // color2 = 'black';
             var html = "<span class='tooltip-dimensions' style='color:" + color1 + ";'>" +
                 "<b style='color:" + color1 + ";'>" + d.Creature + "</b></span><br>" +
-                "<span style='color:" + color2 + ";'><b style='color:" + color2 + ";'>" +
-                d.Mass + "</b> Grams, <b style='color:" + color2 + ";'>" + d.RestingHeartRate +
-                "</b> bpm, <b style='color:" + color2 + ";'>" + d.Longevity + "</b> Years</span>";
+                "<span style='color:" + textColor + ";'><b style='color:" + textColor + ";'>" +
+                d.Mass + "</b> Grams, <b style='color:" + textColor + ";'>" + d.RestingHeartRate +
+                "</b> bpm, <b style='color:" + textColor + ";'>" + d.Longevity + "</b> Years</span>";
 
             tooltip.html(html)
                 .style("left", (d3.event.pageX + 15) + "px")
@@ -202,6 +213,8 @@ function paint() {
         for (var i = 0; i < all.length; i++) {
             all[i].style.backgroundColor = backgroundColor;
         }
+        // Configure text elements
+        d3.selectAll("#scatter text").style("fill", textColor);
         // document.getElementById('scatter-tooltip').style.backgroundColor = backgroundColor;
 
     });
@@ -213,11 +226,22 @@ window.addEventListener('resize', paint);
 paint();
 
 
-// add functionality to reset button
+// add event listeners
 document.getElementById('reset-icon').addEventListener('click', reset);
+document.getElementById('spy-mode-button').addEventListener('click', spyMode);
+
+// add functionality to buttons
 function reset() {
     color1 = 'rgba(141, 172, 198, 1)';
     backgroundColor = 'rgba(218, 209, 210, 1)';
+    textColor = 'black';
+    paint();
+}
+
+function spyMode() {
+    color1 = 'rgba(137, 255, 0, 1)';
+    backgroundColor = 'black';
+    textColor = 'rgba(137, 255, 0, 1)';
     paint();
 }
 

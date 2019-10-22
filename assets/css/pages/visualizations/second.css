@@ -51,16 +51,23 @@
     border: 2px solid white;
 }
 
-.color-pickr-scatter, .color-pickr-background, .reset-container {
+.color-pickr-scatter, .color-pickr-background, .text-pickr, .reset-container {
     display: inline-flex;
     margin-right: 25px;
 }
 
-.reset-container i {
+/* .reset-container i {
     font-size: 115%;
     line-height: inherit;
     cursor: pointer;
+    margin-right: 25px;
+} */
+#dashboard-buttons {
+    display: contents;
 }
+/* #spy-mode-button, #reset-icon {
+    margin-bottom: auto;
+} */
 
 
 /* End Color Picker */
