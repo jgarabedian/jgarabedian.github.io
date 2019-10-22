@@ -199,6 +199,7 @@ function paint() {
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x));
+        
         // animation
         svg.selectAll("circle")
             .transition()
@@ -215,6 +216,7 @@ function paint() {
         }
         // Configure text elements
         d3.selectAll("#scatter text").style("fill", textColor);
+        svg.selectAll('path').attr('stroke', textColor);
         // document.getElementById('scatter-tooltip').style.backgroundColor = backgroundColor;
 
     });
