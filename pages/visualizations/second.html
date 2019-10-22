@@ -63,13 +63,25 @@
                     <header class="major">
                         <h1>My Second Visualization</h1>
                     </header>
-                    <span class="image main"><img src="/images/visualization02.jpg" alt=""></span>
-                    <p>Most of my experience was in making dashboards. I could build a metamodel, do some
-                        simple data cleaning, and use a BI tool to make the visual or dashboard that I desired.
-                        While I enjoyed this, through my time on the SEMOSS team I got to learn more about
-                        what development looks like and the power that comes with it. From there I started to try
-                        and understand more of the SEMOSS Front End Architecture by pestering some developers with
-                        questions.
+                    <span class="image main"><img src="/images/chart02.jpg" alt=""></span>
+                    <p>This looks very similar to my first visualization, so visualization 1.5 would 
+                        probably be a more appropriate name. That said, there are some key differences 
+                        here that are not present in the first iteration! It is still the same data 
+                        posted from the DataViz Context posted in 
+                        <a href="https://www.reddit.com/r/dataisbeautiful/comments/cmrz6j/battle_dataviz_battle_for_the_month_of_august/"
+                            target="_blank">August.</a><br>
+                        One key factor would be the interaction between user and the chart, 
+                        where much less is hard coded. The background color, the text color, etc. 
+                        are made up of variables that the user can update. Additionally, the feature of 
+                        having the dots move from 0 on the X axis is a fun feature to learn about the transition 
+                        elements of the D3 charts.
+                    </p>
+                    <p>
+                        To create the color pickers, I used the Color Pickr API which can be found 
+                        <a href="https://github.com/Simonwep/pickr" target="_blank">here</a>. I found this 
+                        API very easy to use and install, and got me up and running very quickly. All three 
+                        of these use pretty basic configuration, but all I needed was an easy way for someone 
+                        to pick a color and send that color value into my d3 chart.
                     </p>
                     <div class="color-pickr-container">
                         <div class="color-pickr-scatter">
@@ -101,6 +113,12 @@
                         
                         <script type="text/javascript" src="/assets/js/visualizations/scatter.creatures2.js"></script>
                     </div>
+                    <br>
+                    <br>
+                    <p>
+                        As always, excited to hear compliments you have around this! Plus any more suggestions so I can 
+                        get away from this dataset would be appreciated. Be on the lookout for a new chart soon!
+                    </p>
                 </div>
 
             </section>
