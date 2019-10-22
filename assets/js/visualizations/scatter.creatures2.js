@@ -98,12 +98,12 @@ function paint() {
         // Add X axis
         var xMax = d3.max(data, function (d) { return d.Longevity + 1; });
         var x = d3.scaleLinear()
-            .domain([0, xMax])
+            .domain([0, 0])
             .range([0, width]);
         
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+        // svg.append("g")
+        //     .attr("transform", "translate(0," + height + ")")
+        //     .call(d3.axisBottom(x));
         
         
         svg.append("text")
@@ -172,13 +172,30 @@ function paint() {
             .data(data)
             .enter()
             .append("circle")
+                .attr("cx", function (d) { return x(d.Longevity); })
+                .attr("cy", function (d) { return y(d.RestingHeartRate); })
+                .attr("r", 5)
+                .style("fill", color1)
+                .on("mouseover", tipMouseover)
+                .on("mouseout", tipMouseout);
+        // new X axis
+        x.domain([0, xMax])
+        svg.select(".myXaxis")
+            .transition()
+            .duration(2000)
+            .attr("opacity", "1")
+            .call(d3.axisBottom(x));
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+        // animation
+        svg.selectAll("circle")
+            .transition()
+            .delay(function (d, i) { return (i * 3) })
+            .duration(2000)
             .attr("cx", function (d) { return x(d.Longevity); })
-            .attr("cy", function (d) { return y(d.RestingHeartRate); })
-            .attr("r", 5)
-            .style("fill", color1)
-            .on("mouseover", tipMouseover)
-            .on("mouseout", tipMouseout);
-
+            .attr("cy", function (d) { return y(d.RestingHeartRate); });
+        
         // Add background color and include tooltip
         document.getElementById('scatter').style.backgroundColor = backgroundColor;
         var all = document.getElementsByClassName('tooltip');
@@ -196,5 +213,11 @@ window.addEventListener('resize', paint);
 paint();
 
 
-
+// add functionality to reset button
+document.getElementById('reset-icon').addEventListener('click', reset);
+function reset() {
+    color1 = 'rgba(141, 172, 198, 1)';
+    backgroundColor = 'rgba(218, 209, 210, 1)';
+    paint();
+}
 

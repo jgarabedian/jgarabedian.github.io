@@ -51,9 +51,15 @@
     border: 2px solid white;
 }
 
-.color-pickr-scatter, .color-pickr-background {
+.color-pickr-scatter, .color-pickr-background, .reset-container {
     display: inline-flex;
     margin-right: 25px;
+}
+
+.reset-container i {
+    font-size: 115%;
+    line-height: inherit;
+    cursor: pointer;
 }
 
 
