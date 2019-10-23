@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+
+<head>
+    <title>Jack's Page</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/noscript.css">
+    </noscript>
+    <!-- Brython -->
+    <script src="/assets/js/brython/brython.js"></script>
+
+    
+</head>
+
+<body class="is-preload" onload="brython(1)">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header"></header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <ul class="links" id="menu-links"></ul>
+            <ul class="actions stacked">
+                <li><a href="/" class="button primary fit">Get Started</a></li>
+                <!-- <li><a href="#" class="button fit">Log In</a></li> -->
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main" class="alt">
+
+            <!-- One -->
+            <section id="one">
+                <div class="inner">
+                    <header class="major">
+                        <h1>Python in the Browser</h1>
+                    </header>
+                        
+                    <span class="image main"><img src="/images/python.jpeg" alt=""></span>
+                    <p>Python has always been an interest of mine, and a skill that I wish I had 
+                        built out more. It's a very in demand skill, but so far my only experience 
+                        with it was a class that I took my senior year of college and that was it. 
+                        As interested as I am in Data Science and Data Analysis, I tried to stay familiar 
+                        but didn't have an avenue to challenge myself in Python. My Deloitte work didn't have 
+                        the opportunities available other than a few basic classes, so I had to think on 
+                        my own of what I could do. Luckily, through this website I was already getting more 
+                        and more ideas of ways to use python!
+                    </p>
+                    <p>
+                        What I quickly figured out is that through a static web page (which can be hosted 
+                        by Github pages), access to python is not readily available due to inability to access 
+                        dynamic content through the server. This forced me to find ways for the client side 
+                        to handle Python, and different tools to use. The first one I looked at was 
+                        <a href="https://brython.info/" target="_blank">Brython</a>, seemed like an easy 
+                        place to start compiling python code from the Front End. Using a simple example, the 
+                        below input field and button click executes a simple python script - go ahead and 
+                        type in your name below! (As a hint, I've also enabled the enter key 
+                        to execute the function)
+                    </p>
+                    <!-- Python Scripts -->
+                    <script type="text/python" src="/assets/python/helloWorld.py"></script>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" id="name-input" placeholder="Type in your name">
+                            
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            <ul class="actions fit">
+                                <li><a id="name-submit" class="button primary fit">Execute Python</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                    <p>That's relatively simple, and if I have a simple script like that that just passes 
+                        in a variable it works well. But what if I want the user to pass in more 
+                        arguments or to do something more complicated? Now I have the structure, so let's give 
+                        it a shot with some simple addition. It's here that I start to understand how to 
+                        correctly pass in values to my python code.
+                    </p>
+                    <h3>Enter in 2 numbers to add together!</h3>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" id="num1-input" placeholder="Type in a number here">
+                            <input type="text" id="num2-input" placeholder="Type in a number here">
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            <ul class="actions fit">
+                                <!-- Python Addition Script -->
+                                <script type="text/python" src="/assets/python/addition.py"></script>
+                                <li><a id="add-submit" class="button primary fit">Execute Python</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Contact -->
+        <section id="contact"></section>
+
+        <!-- Footer -->
+        <footer id="footer"></footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <!-- load in components -->
+    <script src="/assets/js/components/footer.js"></script>
+    <script src="/assets/js/components/header.js"></script>
+    <script src="/assets/js/components/contact.js"></script>
+    <script src="/assets/js/components/menu.js"></script>
+
+</body>
+
+</html>
