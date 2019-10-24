@@ -1903,6 +1903,7 @@ input, select, textarea {
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
+	input[type="number"]
 	input[type="search"],
 	input[type="url"],
 	select,
@@ -1926,6 +1927,7 @@ input, select, textarea {
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
+		input[type="number"]:invalid,
 		input[type="search"]:invalid,
 		input[type="url"]:invalid,
 		select:invalid,
@@ -1937,6 +1939,7 @@ input, select, textarea {
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
+		input[type="number"]:focus,
 		input[type="search"]:focus,
 		input[type="url"]:focus,
 		select:focus,
@@ -1972,6 +1975,7 @@ input, select, textarea {
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
+	input[type="number"]
 	input[type="search"],
 	input[type="url"],
 	select {
@@ -3950,3 +3954,31 @@ input, select, textarea {
 			opacity: 1;
 			visibility: visible;
 		}
+
+/* Custom CSS */
+.input-number {
+	/* background: rgba(212, 212, 255, 0.035); */
+	height: 2.75em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background: rgba(212, 212, 255, 0.035);
+	border: none;
+	border-radius: 0;
+	color: inherit;
+	display: block;
+	outline: 0;
+	padding: 0 1em;
+	text-decoration: none;
+	width: 100%;
+}
+
+.input-number:invalid {
+	box-shadow: none;
+}
+
+.input-number:focus {
+	border-color: #9bf1ff;
+	box-shadow: 0 0 0 2px #9bf1ff;
+}
