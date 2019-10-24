@@ -20,6 +20,7 @@
     </noscript>
     <!-- Brython -->
     <script src="/assets/js/brython/brython.js"></script>
+    <script src="/assets/js/brython/brython_stdlib.js"></script>
 
     
 </head>
@@ -92,18 +93,32 @@
                         it a shot with some simple addition. It's here that I start to understand how to 
                         correctly pass in values to my python code.
                     </p>
-                    <h3>Enter in 2 numbers to add together!</h3>
+                    <h3>Enter in 2 numbers to do some math on!</h3>
                     <div class="row gtr-uniform">
-                        <div class="col-6 col-12-xsmall">
-                            <input type="text" id="num1-input" placeholder="Type in a number here">
-                            <input type="text" id="num2-input" placeholder="Type in a number here">
+                        <div class="col-3 col-12-xsmall">
+                            <input class="input-number" type="number" id="num1-input" placeholder="Type in a number here">
                         </div>
-                        <div class="col-6 col-12-xsmall">
+                        <div class="col-3 col-12-xsmall">
+                            <select name="math-type" id="math-type">
+                                <!-- <option value="">- Category -</option> -->
+                                <option value="Plus">Plus</option>
+                                <option value="Minus">Minus</option>
+                                <option value="Times">Times</option>
+                                <option value="Divided">Divided By</option>
+                            </select>
+                        </div>
+                        <div class="col-3 col-12-xsmall">
+                            <input class="input-number" type="number" id="num2-input" placeholder="Type in a number here">
+                        </div>
+                        <div class="col-1 col-12-xsmall">
                             <ul class="actions fit">
                                 <!-- Python Addition Script -->
-                                <script type="text/python" src="/assets/python/addition.py"></script>
-                                <li><a id="add-submit" class="button primary fit">Execute Python</a></li>
+                                <script type="text/python" src="/assets/python/simpleMath.py"></script>
+                                <li><a id="add-submit" class="button primary fit"> = </a></li>
                             </ul>
+                        </div>
+                        <div class="col-2 col-12-xsmall">
+                            <input disabled type="text" id="answer">
                         </div>
                     </div>
 
