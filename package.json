@@ -1,4 +1,7 @@
 {
+  "name": "jgarabedian.github.io",
+  "version": "1.0.1",
+  "description": "Showcase Jacks side projects so he can get a new job",
   "dependencies": {
     "@simonwep/pickr": "^1.4.5"
   }
