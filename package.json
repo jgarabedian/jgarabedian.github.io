@@ -1,8 +1,16 @@
 {
   "name": "jgarabedian.github.io",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Showcase Jacks side projects so he can get a new job",
+  "scripts": {
+    "build": "babel assets/js -d lib"
+  },
   "dependencies": {
     "@simonwep/pickr": "^1.4.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1"
   }
 }
