@@ -41,6 +41,8 @@
 
 .color-pickr-container {
     display: inline-flex;
+    width: 100%;
+    overflow: auto;
 }
 
 .color-pickr-container p {
