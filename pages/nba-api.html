@@ -23,8 +23,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/assets/css/pages/nba-api.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150551765-2"></script>
-    <script src="../assets/js/google.analytics.js"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150551765-2"></script> -->
+    <!-- <script src="../assets/js/google.analytics.js"></script> -->
 </head>
 
 <body class="is-preload">
@@ -53,15 +53,24 @@
                     <header class="major">
                         <h1>NBA API</h1>
                     </header>
-                    <!-- <span class="image main"><img src="/images/notepadplus.2jpg.jpg" alt=""></span> -->
-                    <p>For those who are unfamiliar with <a href="http://semoss.org" target="_blank">SEMOSS</a>
-                        (The project that I'm on), it uses a domain specific language called pixel. Pixel is very
-                        powerful in the sense that it is data agnostic (same language for SQL, SPARQL, etc.) and
-                        essentially all of SEMOSS runs off of pixel. It's a language that's similar to SQL, but with
-                        notable exceptions. For those who make a lot of SEMOSS dashboards, it has become essential
-                        to work extensively with pixel - typically in Notepad++.
-                    </p>
-                    <h3>Check out what it looks like!</h3>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-small">
+                            <input type="text" name="player-search" id="player-search-field" value="" placeholder="Davis">
+                        </div>
+                        <div class="col-6 col-12-small">
+                            <ul class="actions">
+                                <li><input type="submit" value="Get Results" class="primary" id="playerSearchBtn"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search">
+                        
+                    </div>
+                    <div class="player-results" id="resultList">
+                        <ul id="results">
+
+                        </ul>
+                    </div>
                 </div>
             </section>
 
