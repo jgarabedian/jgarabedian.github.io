@@ -36,7 +36,11 @@ function getPlayers(results) {
         // Add player height
         p = createElement('p');
         appendElement(playerStats, p);
-        p.innerHTML = 'Height: ' + `${player.height_feet}` + '\'' + `${player.height_inches}` + '"';
+        if (`${player.height_feet}` === "null") {
+            p.innerHTML = 'Height is not available'
+        } else {
+            p.innerHTML = 'Height: ' + `${player.height_feet}` + '\'' + `${player.height_inches}` + '"';
+        }
         // Add player position
         p = createElement('p');
         appendElement(playerStats, p);
@@ -52,12 +56,6 @@ function addClass(el, className) {
 function changeId(el, id) {
     el.id = id;
     return el;
-}
-
-function createCard(el, player) {
-    el.className = 'player__card';
-    el.id = 'player__card-' + String(`${player.id}`);
-    return el
 }
 
 function createElement(el) {
