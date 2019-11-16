@@ -12,25 +12,42 @@ function getPlayers(results) {
         // appendElement(ul, li)
         // Use the logic to create cards
         const cardContainer = document.getElementById('card-container');
-        let card = createElement('div');
-        addClass(card, 'player__card')
-        appendElement(cardContainer, card)
-        let cardHeader = createElement('div');
-        addClass(cardHeader, 'player__card__header')
-        appendElement(card, cardHeader);
-        let cardTeam = createElement('div');
-        addClass(cardTeam, 'player__card-team');
-        appendElement(cardHeader, cardTeam);
+        cardContainer.innerHTML += playerCard;
+        let id = `${player.id}`;
+        let teamName = document.getElementById('team-name');
+        let playerName = document.getElementById('player-name');
+        let playerStats = document.getElementById('player-stats');
+
+        changeId(playerName, 'player-name' + id);
+        changeId(playerStats, 'player-stats' + id);
+        changeId(teamName, 'team-name' + id);
+        
         let h5 = createElement('h5');
-        appendElement(cardTeam, h5);
+        appendElement(teamName, h5);
         let team = `${player.team.full_name}`;
         h5.innerHTML = team;
         
+        let p = createElement('p');
+        appendElement(playerName, p);
+        p.innerHTML = `${player.first_name}` + ' ' + `${player.last_name}`;
+
+        p = createElement('p');
+        appendElement(playerStats, p);
+        p.innerHTML = `${player.height_feet}` + '\'' + `${player.height_inches}` + '"';
+
+        p = createElement('p');
+        appendElement(playerStats, p);
+        p.innerHTML = 'Position: ' + `${player.position}`;
     })
 }
 
 function addClass(el, className) {
     el.className = className;
+    return el;
+}
+
+function changeId(el, id) {
+    el.id = id;
     return el;
 }
 
@@ -49,7 +66,7 @@ function appendElement(parent, el) {
 }
 
 function destroyList() {
-    document.getElementById('results').innerHTML = '';
+    document.getElementById('card-container').innerHTML = '';
     // console.log('destroy past results')
 }
 
@@ -95,3 +112,18 @@ function getEventListeners() {
         }
     })
 }
+
+var playerCard = '';
+playerCard += '<div class="player__card" id="card">';
+playerCard += '<div class="player__card__header">';
+playerCard += '<div class="player__card-team" id="team-name">';
+playerCard += '</div>';
+playerCard += '<div class="player__card-name" id="player-name">';
+playerCard += '</div></div>';
+playerCard += '<div class="player__card__content">';
+playerCard += '<div class="player__card__content__left">';
+playerCard += '<i class="fas fa-user fa-5x"></i>';
+playerCard += '</div><div class="player__card__content__right" id="player-stats">';
+playerCard += '</div></div></div>';
+
+
