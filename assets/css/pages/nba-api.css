@@ -1,0 +1,30 @@
+/* Style the player card :) */
+.player__card {
+    border: 2px solid gold;
+    display: block;
+    width: 50%;
+}
+
+.player__card__header {
+    width: 100%;
+    display: inline-flex;
+}
+
+.player__card-team, .player__card-name {
+    width: 50%;
+    text-align: center;
+} 
+
+.player__card__content {
+    display: inline-flex;
+    width: 100%;
+}
+
+.player__card__content__left, .player__card__content__left {
+    width: 50%;
+} 
+
+.player__card__content__left i {
+    width: 100%;
+    text-align: center;
+}
