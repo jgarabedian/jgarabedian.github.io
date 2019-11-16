@@ -17,24 +17,27 @@ function getPlayers(results) {
         let teamName = document.getElementById('team-name');
         let playerName = document.getElementById('player-name');
         let playerStats = document.getElementById('player-stats');
-
+        let h5 = createElement('h5');
+        let team = `${player.team.full_name}`;
+        let p = createElement('p');
+        // create unique IDs for the player card
+        // TODO: add this to entire card for further interaction
         changeId(playerName, 'player-name' + id);
         changeId(playerStats, 'player-stats' + id);
         changeId(teamName, 'team-name' + id);
         
-        let h5 = createElement('h5');
+        // Add team name
         appendElement(teamName, h5);
-        let team = `${player.team.full_name}`;
         h5.innerHTML = team;
         
-        let p = createElement('p');
+        // Add player name
         appendElement(playerName, p);
         p.innerHTML = `${player.first_name}` + ' ' + `${player.last_name}`;
-
+        // Add player height
         p = createElement('p');
         appendElement(playerStats, p);
-        p.innerHTML = `${player.height_feet}` + '\'' + `${player.height_inches}` + '"';
-
+        p.innerHTML = 'Height: ' + `${player.height_feet}` + '\'' + `${player.height_inches}` + '"';
+        // Add player position
         p = createElement('p');
         appendElement(playerStats, p);
         p.innerHTML = 'Position: ' + `${player.position}`;
