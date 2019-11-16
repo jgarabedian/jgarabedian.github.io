@@ -3,23 +3,15 @@ results = {};
 // where do I want to return the results to?
 function getPlayers(results) {
     return results.map(function (player) {
-        // const ul = document.getElementById('results');
-        // let li = createElement('li');
-        // let playerCard = `${player.first_name}` + ' ' + `${player.last_name}`;
-        // playerCard += '<br>Team: ' + `${player.team.full_name}`;
-        // playerCard += '<br>id: ' + `${player.id}`;
-        // li.innerHTML = playerCard;
-        // appendElement(ul, li)
-        // Use the logic to create cards
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerHTML += playerCard;
-        let id = `${player.id}`;
-        let teamName = document.getElementById('team-name');
-        let playerName = document.getElementById('player-name');
-        let playerStats = document.getElementById('player-stats');
-        let h5 = createElement('h5');
-        let team = `${player.team.full_name}`;
-        let p = createElement('p');
+        let id = `${player.id}`,
+            teamName = document.getElementById('team-name'),
+            playerName = document.getElementById('player-name'),
+            playerStats = document.getElementById('player-stats'),
+            h5 = createElement('h5'),
+            team = `${player.team.full_name}`,
+            p = createElement('p');
         // create unique IDs for the player card
         // TODO: add this to entire card for further interaction
         changeId(playerName, 'player-name' + id);
