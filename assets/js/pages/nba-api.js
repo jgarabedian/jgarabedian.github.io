@@ -1,6 +1,3 @@
-results = {};
-
-// where do I want to return the results to?
 function getPlayers(results, container) {
     return results.map(function (player) {
         const cardContainer = document.getElementById(container);
@@ -16,7 +13,6 @@ function getPlayers(results, container) {
             logoDir = '/images/logos/',
             p = createElement('p');
         // create unique IDs for the player card
-        // TODO: add this to entire card for further interaction
         changeId(card, 'card' + id);
         changeId(playerName, 'player-name-' + id);
         changeId(playerStats, 'player-stats-' + id);
@@ -84,6 +80,7 @@ function searchPlayer(search, container) {
                 // results = data.data;
                 // console.log(data.data);
                 getPlayers(data.data, container);
+                addCardClick();
             }).catch(err => {
                 console.log(err);
             });
@@ -91,6 +88,29 @@ function searchPlayer(search, container) {
         .catch(err => {
             console.log(err);
         });
+}
+
+function addCardClick() {
+    let cards = document.getElementsByClassName('player__card'),
+        i = 0;
+    var length = cards.length;
+    for (i; i < length; i++) {
+        cards[i].addEventListener('click', function () {
+            cardFocus(this.parentElement.id, this.id);
+        });
+    }
+}
+
+function cardFocus(container, id) {
+    let div = document.getElementById(container),
+        cards = div.getElementsByClassName('player__card'),
+        i = 0,
+        length = cards.length;
+    for (i; i < length; i++) {
+        if (cards[i].id !== id) {
+            cards[i].style.display = 'none';
+        }
+    }
 }
 
 // get event listeners only when page loads
@@ -110,7 +130,7 @@ function getEventListeners() {
         }
     });
     document.getElementById('playerSearchBtn-2').addEventListener('click', function () {
-        var searchStr = document.getElementById('player-search-field').value;
+        var searchStr = document.getElementById('player-search-field-2').value;
         searchPlayer(searchStr, 'card-container-right');
     });
     document.getElementById('player-search-field-2').addEventListener('keypress', function (e) {
