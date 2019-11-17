@@ -9,15 +9,18 @@ function getPlayers(results) {
             teamName = document.getElementById('team-name'),
             playerName = document.getElementById('player-name'),
             playerStats = document.getElementById('player-stats'),
+            teamLogo = document.getElementById('team-logo'),
             h5 = createElement('h5'),
             team = `${player.team.full_name}`,
+            logoDir = '/images/logos/';
             p = createElement('p');
         // create unique IDs for the player card
         // TODO: add this to entire card for further interaction
-        changeId(playerName, 'player-name' + id);
-        changeId(playerStats, 'player-stats' + id);
-        changeId(teamName, 'team-name' + id);
-        
+        changeId(playerName, 'player-name-' + id);
+        changeId(playerStats, 'player-stats-' + id);
+        changeId(teamName, 'team-name-' + id);
+        changeId(teamLogo, 'team-logo-' + team);
+        teamLogo.src = logoDir + team + '.png'
         // Add team name
         appendElement(teamName, h5);
         h5.innerHTML = team;
@@ -115,7 +118,7 @@ playerCard += '<div class="player__card-name" id="player-name">';
 playerCard += '</div></div>';
 playerCard += '<div class="player__card__content">';
 playerCard += '<div class="player__card__content__left">';
-playerCard += '<i class="fas fa-user fa-5x"></i>';
+playerCard += '<img class="team-logo" id="team-logo"></i>';
 playerCard += '</div><div class="player__card__content__right" id="player-stats">';
 playerCard += '</div></div></div>';
 
