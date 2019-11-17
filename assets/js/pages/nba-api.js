@@ -1,21 +1,23 @@
 results = {};
 
 // where do I want to return the results to?
-function getPlayers(results) {
+function getPlayers(results, container) {
     return results.map(function (player) {
-        const cardContainer = document.getElementById('card-container');
+        const cardContainer = document.getElementById(container);
         cardContainer.innerHTML += playerCard;
         let id = `${player.id}`,
+            card = document.getElementById('card'),
             teamName = document.getElementById('team-name'),
             playerName = document.getElementById('player-name'),
             playerStats = document.getElementById('player-stats'),
             teamLogo = document.getElementById('team-logo'),
             h5 = createElement('h5'),
             team = `${player.team.full_name}`,
-            logoDir = '/images/logos/';
+            logoDir = '/images/logos/',
             p = createElement('p');
         // create unique IDs for the player card
         // TODO: add this to entire card for further interaction
+        changeId(card, 'card' + id);
         changeId(playerName, 'player-name-' + id);
         changeId(playerStats, 'player-stats-' + id);
         changeId(teamName, 'team-name-' + id);
@@ -61,13 +63,13 @@ function appendElement(parent, el) {
     return parent.appendChild(el);
 }
 
-function destroyList() {
-    document.getElementById('card-container').innerHTML = '';
+function destroyList(container) {
+    document.getElementById(container).innerHTML = '';
     // console.log('destroy past results')
 }
 
-function searchPlayer(search) {
-    destroyList();
+function searchPlayer(search, container) {
+    destroyList(container);
     var url = 'https://free-nba.p.rapidapi.com/players?page=0&per_page=50&search=';
     url += encodeURI(search);
     fetch(url, {
@@ -80,8 +82,8 @@ function searchPlayer(search) {
         .then(function (response) {
             response.json().then(function (data) {
                 // results = data.data;
-                console.log(data.data);
-                getPlayers(data.data);
+                // console.log(data.data);
+                getPlayers(data.data, container);
             }).catch(err => {
                 console.log(err);
             });
@@ -99,14 +101,24 @@ window.onload = function () {
 function getEventListeners() {
     document.getElementById('playerSearchBtn').addEventListener('click', function () {
         var searchStr = document.getElementById('player-search-field').value;
-        searchPlayer(searchStr);
+        searchPlayer(searchStr, 'card-container');
     });
     document.getElementById('player-search-field').addEventListener('keypress', function (e) {
         if (e.which === 13) {
             var searchStr = document.getElementById('player-search-field').value;
-            searchPlayer(searchStr);
+            searchPlayer(searchStr, 'card-container');
         }
-    })
+    });
+    document.getElementById('playerSearchBtn-2').addEventListener('click', function () {
+        var searchStr = document.getElementById('player-search-field').value;
+        searchPlayer(searchStr, 'card-container-right');
+    });
+    document.getElementById('player-search-field-2').addEventListener('keypress', function (e) {
+        if (e.which === 13) {
+            var searchStr = document.getElementById('player-search-field-2').value;
+            searchPlayer(searchStr, 'card-container-right');
+        }
+    });
 }
 
 var playerCard = '';

@@ -54,24 +54,32 @@
                         <h1>NBA API</h1>
                     </header>
                     <div class="row gtr-uniform">
-                        <div class="col-6 col-12-small">
-                            <input type="text" name="player-search" id="player-search-field" value="" placeholder="Davis">
+                        <div class="col-4 col-12-small">
+                            <input type="text" name="player-search" id="player-search-field" value="" placeholder="Anthony Davis">
                         </div>
-                        <div class="col-6 col-12-small">
+                        <div class="col-2 col-12-small">
                             <ul class="actions">
-                                <li><input type="submit" value="Get Results" class="primary" id="playerSearchBtn"></li>
+                                <li><input type="submit" value="Search" class="primary" id="playerSearchBtn"></li>
+                            </ul>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <input type="text" name="player-search-2" id="player-search-field-2" value="" placeholder="Anthony Davis">
+                        </div>
+                        <div class="col-2 col-12-small">
+                            <ul class="actions">
+                                <li><input type="submit" value="Search" class="primary" id="playerSearchBtn-2"></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="search">
-                        
-                    </div>
-                    <div class="player-results" id="resultList">
+                    <!-- <div class="player-results" id="resultList">
                         <ul id="results">
 
                         </ul>
+                    </div> -->
+                    <div class="container">
+                        <div class="card-container" id="card-container"></div>
+                        <div class="card-container" id="card-container-right"></div>
                     </div>
-                    <div id="card-container"></div>
                     <!-- <div class="player__card">
                         <div class="player__card__header">
                             <div class="player__card-team">

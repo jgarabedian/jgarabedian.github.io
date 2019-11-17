@@ -1,9 +1,48 @@
+/* Scrollbar */
+.card-container::-webkit-scrollbar {
+    width: 1em;
+}
+.card-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.card-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+/* Card Container */
+.container {
+    width: 100%;
+    display: inline-block;
+    max-height: 150vh;
+    height: 80vh;
+    overflow: hidden;
+    margin-top: 25px;
+}
+.card-container {
+    width: 48%;
+    padding-left: 1%;
+    padding-right: 1%;
+    float: left;
+    height: 100%;
+    overflow: overlay;
+}
+/* #card-container-right {
+    float: right;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+} */
+
 /* Style the player card :) */
 .player__card {
     border: 2px solid gold;
     display: block;
-    width: 50%;
-    margin: 25px;
+    /* width: 50%; */
+    margin-bottom: 25px;
+    margin-right: 25px;
+    margin-left: 0;
+    cursor: pointer;
 }
 
 .player__card__header {
@@ -37,4 +76,10 @@
 .player__card__content__left .team-logo {
     height: 250px;
     margin-top: -30px;
+}
+
+/* Hover effects */
+.player__card:hover {
+    background-color: #464A61;
+    border: 1px dashed gold;
 }
