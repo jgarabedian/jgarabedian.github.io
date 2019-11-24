@@ -1,3 +1,7 @@
+// Global Variables
+var leftSelect = false,
+    rightSelect = false;
+
 function getPlayers(results, container) {
     return results.map(function (player) {
         const cardContainer = document.getElementById(container);
@@ -38,6 +42,13 @@ function getPlayers(results, container) {
         p = createElement('p');
         appendElement(playerStats, p);
         p.innerHTML = 'Position: ' + `${player.position}`;
+        // if the search again, card is not selected
+        if (container === 'card-container') {
+            leftSelect = false;
+        }
+        if (container === 'card-container-right') {
+            rightSelect = false;
+        }
     })
 }
 
@@ -106,6 +117,12 @@ function cardFocus(container, id) {
         cards = div.getElementsByClassName('player__card'),
         i = 0,
         length = cards.length;
+    if (container === 'card-container') {
+        leftSelect = true;
+    }
+    if (container === 'card-container-right') {
+        rightSelect = true;
+    }
     for (i; i < length; i++) {
         if (cards[i].id !== id) {
             cards[i].style.display = 'none';
