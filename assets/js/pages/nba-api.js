@@ -1,6 +1,22 @@
 // Global Variables
 var leftSelect = false,
+    leftPlayer = '',
+    rightPlayer = '',
     rightSelect = false;
+
+fetch("https://free-nba.p.rapidapi.com/games?Seasons=2019&page=0&per_page=25", {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "free-nba.p.rapidapi.com",
+        "x-rapidapi-key": "46332bc018mshbf0ce3c150e74cap113a99jsn4e1df656eb26"
+    }
+})
+    .then(response => {
+        console.log(response.data)
+    })
+    .catch(err => {
+        console.log(err);
+    });
 
 function getPlayers(results, container) {
     return results.map(function (player) {
@@ -45,9 +61,11 @@ function getPlayers(results, container) {
         // if the search again, card is not selected
         if (container === 'card-container') {
             leftSelect = false;
+            leftPlayer = '';
         }
         if (container === 'card-container-right') {
             rightSelect = false;
+            rightSelect = '';
         }
     })
 }
@@ -119,9 +137,11 @@ function cardFocus(container, id) {
         length = cards.length;
     if (container === 'card-container') {
         leftSelect = true;
+        leftPlayer = id.replace('card', '');
     }
     if (container === 'card-container-right') {
         rightSelect = true;
+        rightPlayer = id.replace('card', '');
     }
     for (i; i < length; i++) {
         if (cards[i].id !== id) {
@@ -156,6 +176,36 @@ function getEventListeners() {
             searchPlayer(searchStr, 'card-container-right');
         }
     });
+    document.getElementById('compare-players').addEventListener('click', testStats);
+}
+
+function testStats() {
+    fetch('https://www.balldontlie.io/api/v1/season_averages?player_ids[]=214&player_ids[]=104&season=2019', {
+        'method': 'GET'
+    })
+        .then(function (response) {
+            response.json().then(function (data) {
+                console.log(data.data);
+            })
+    })
+}
+
+function testPlayerStats() {
+    fetch("https://free-nba.p.rapidapi.com/stats?dates=2019-11-23T00:00:00.000Z&seasons=2019&page=0&per_page=25&player_ids=214", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "free-nba.p.rapidapi.com",
+            "x-rapidapi-key": "46332bc018mshbf0ce3c150e74cap113a99jsn4e1df656eb26"
+        }
+    })
+        .then(function(response) {
+            response.json().then(function (data) {
+                console.log(data.data);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 var playerCard = '';
