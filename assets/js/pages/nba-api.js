@@ -3,7 +3,7 @@ var leftSelect = false,
     leftPlayer = '',
     rightPlayer = '',
     rightSelect = false;
-
+var selectedPlayers = {};
 fetch("https://free-nba.p.rapidapi.com/games?Seasons=2019&page=0&per_page=25", {
     "method": "GET",
     "headers": {
@@ -19,6 +19,16 @@ fetch("https://free-nba.p.rapidapi.com/games?Seasons=2019&page=0&per_page=25", {
     });
 
 function getPlayers(results, container) {
+    // if the search again, card is not selected
+    if (container === 'card-container') {
+        leftSelect = false;
+        leftPlayer = '';
+    }
+    if (container === 'card-container-right') {
+        rightSelect = false;
+        rightSelect = '';
+    }
+    checkButton();
     return results.map(function (player) {
         const cardContainer = document.getElementById(container);
         cardContainer.innerHTML += playerCard;
@@ -58,16 +68,7 @@ function getPlayers(results, container) {
         p = createElement('p');
         appendElement(playerStats, p);
         p.innerHTML = 'Position: ' + `${player.position}`;
-        // if the search again, card is not selected
-        if (container === 'card-container') {
-            leftSelect = false;
-            leftPlayer = '';
-        }
-        if (container === 'card-container-right') {
-            rightSelect = false;
-            rightSelect = '';
-        }
-    })
+    });
 }
 
 function addClass(el, className) {
@@ -148,11 +149,41 @@ function cardFocus(container, id) {
             cards[i].style.display = 'none';
         }
     }
+    checkButton();
+}
+
+function getPlayerStats() {
+    if (leftSelect && rightSelect) {
+        let players = 'player_ids[]=' + leftPlayer + '&player_ids[]=' + rightPlayer;
+        let url = 'https://www.balldontlie.io/api/v1/season_averages?season=2019&';
+        url += players;
+        fetch(url, {
+            'method': 'GET'
+        })
+            .then(function (response) {
+                response.json().then(function (data) {
+                    console.log(data.data);
+                    selectedPlayers = data.data;
+                })
+            })
+    } else {
+        console.log('You must select a player!');
+    }
+}
+
+function checkButton() {
+    btn = document.getElementById('compare-players');
+    if (!leftSelect || !rightSelect) {
+        btn.className = 'primary fit disabled';
+    } else {
+        btn.className = 'primary fit';
+    }
 }
 
 // get event listeners only when page loads
 window.onload = function () {
     getEventListeners();
+    this.checkButton();
 }
 
 function getEventListeners() {
@@ -176,36 +207,8 @@ function getEventListeners() {
             searchPlayer(searchStr, 'card-container-right');
         }
     });
-    document.getElementById('compare-players').addEventListener('click', testStats);
-}
-
-function testStats() {
-    fetch('https://www.balldontlie.io/api/v1/season_averages?player_ids[]=214&player_ids[]=104&season=2019', {
-        'method': 'GET'
-    })
-        .then(function (response) {
-            response.json().then(function (data) {
-                console.log(data.data);
-            })
-    })
-}
-
-function testPlayerStats() {
-    fetch("https://free-nba.p.rapidapi.com/stats?dates=2019-11-23T00:00:00.000Z&seasons=2019&page=0&per_page=25&player_ids=214", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "free-nba.p.rapidapi.com",
-            "x-rapidapi-key": "46332bc018mshbf0ce3c150e74cap113a99jsn4e1df656eb26"
-        }
-    })
-        .then(function(response) {
-            response.json().then(function (data) {
-                console.log(data.data);
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    document.getElementById('compare-players').addEventListener('click', getPlayerStats);
+    // document.addEventListener('click', checkButton);
 }
 
 var playerCard = '';
