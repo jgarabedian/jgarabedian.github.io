@@ -141,6 +141,7 @@ function getPlayerStats() {
         })
             .then(function (response) {
                 response.json().then(function (data) {
+                    // TODO: if data.data is empty, catch that
                     showPlayerStats(data.data);
 
                 })
