@@ -105,6 +105,12 @@ function cardFocus(container, id) {
         i = 0,
         length = cards.length;
     for (i; i < length; i++) {
+        if (cards[i].id != id) {
+            cards[i].style.display = 'none';
+        }
+    }
+    // remove elements above
+    for (i = 0; i < length; i++) {
         if (cards[0].id != id) {
             cards[0].parentNode.removeChild(cards[0]);
         }
