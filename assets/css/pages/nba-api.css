@@ -96,6 +96,11 @@
 }
 
 .player__compare__stats__left, .player__compare__stats__right {
-    width: 50%;
+    width: 25%;
     text-align: center;
+}
+
+.player__compare__stats__middle {
+    width: 50%;
+    height: 750px;
 }

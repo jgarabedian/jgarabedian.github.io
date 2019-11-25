@@ -7,9 +7,12 @@ var selectedPlayers = {
     left: [],
     right: []
 };
+var chartData = {};
+var statsCompared = {};
 
 function getPlayers(results, container) {
     // if the search again, card is not selected
+    // debugger;
     if (container === 'card-container') {
         leftSelect = false;
         leftPlayer = '';
@@ -77,6 +80,7 @@ function searchPlayer(search, container) {
             response.json().then(function (data) {
                 // results = data.data;
                 // console.log(data.data);
+                // debugger;
                 getPlayers(data.data, container);
                 addCardClick();
             }).catch(err => {
@@ -142,8 +146,10 @@ function getPlayerStats() {
             .then(function (response) {
                 response.json().then(function (data) {
                     // TODO: if data.data is empty, catch that
-                    showPlayerStats(data.data);
-
+                    statsCompared = data.data;
+                    showPlayerStats(statsCompared);
+                    // debugger;
+                    // paint(chartData);
                 })
             })
     } else {
@@ -153,16 +159,24 @@ function getPlayerStats() {
 
 function showPlayerStats(players) {
     console.log(players);
+    // clear chart Data
+    chartData = {};
     if (players[0].player_id.toString() == leftPlayer) {
         createList(players, 0, 'stats-left', selectedPlayers["left"][0]);
+        chartData[selectedPlayers["left"][0]] = players[0];
     } else {
         createList(players, 1, 'stats-left', selectedPlayers["left"][0]);
+        chartData[selectedPlayers["left"][0]] = players[1];
     }
     if (players[1].player_id.toString() == rightPlayer) {
         createList(players, 1, 'stats-right', selectedPlayers["right"][0]);
+        chartData[selectedPlayers["right"][0]] = players[1];
     } else {
         createList(players, 0, 'stats-right', selectedPlayers["right"][0]);
+        chartData[selectedPlayers["right"][0]] = players[0];
     }
+    // removeSeason(chartData);
+    paint(chartData);
 }
 
 function createList(players, idx, ul, name) {
@@ -269,7 +283,10 @@ function getEventListeners() {
     });
     document.getElementById('compare-players').addEventListener('click', getPlayerStats);
     // document.addEventListener('click', checkButton);
+    // nbaChart = echarts.init(document.getElementById('charts'));
 }
+
+
 
 var playerCard = '';
 playerCard += '<div class="player__card" id="card">';
