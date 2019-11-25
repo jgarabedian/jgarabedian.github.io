@@ -88,3 +88,14 @@
 .player__compare ul {
     list-style: none;
 }
+
+.player__compare__stats {
+    width: 100%;
+    display: inline-flex;
+    margin-top: 100px;
+}
+
+.player__compare__stats__left, .player__compare__stats__right {
+    width: 50%;
+    text-align: center;
+}

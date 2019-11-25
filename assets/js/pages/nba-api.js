@@ -7,19 +7,6 @@ var selectedPlayers = {
     left: [],
     right: []
 };
-fetch("https://free-nba.p.rapidapi.com/games?Seasons=2019&page=0&per_page=25", {
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-host": "free-nba.p.rapidapi.com",
-        "x-rapidapi-key": "46332bc018mshbf0ce3c150e74cap113a99jsn4e1df656eb26"
-    }
-})
-    .then(response => {
-        console.log(response.data)
-    })
-    .catch(err => {
-        console.log(err);
-    });
 
 function getPlayers(results, container) {
     // if the search again, card is not selected
@@ -75,29 +62,6 @@ function getPlayers(results, container) {
     });
 }
 
-function addClass(el, className) {
-    el.className = className;
-    return el;
-}
-
-function changeId(el, id) {
-    el.id = id;
-    return el;
-}
-
-function createElement(el) {
-    return document.createElement(el)
-}
-
-function appendElement(parent, el) {
-    return parent.appendChild(el);
-}
-
-function destroyList(container) {
-    document.getElementById(container).innerHTML = '';
-    // console.log('destroy past results')
-}
-
 function searchPlayer(search, container) {
     destroyList(container);
     var url = 'https://free-nba.p.rapidapi.com/players?page=0&per_page=50&search=';
@@ -140,6 +104,12 @@ function cardFocus(container, id) {
         cards = div.getElementsByClassName('player__card'),
         i = 0,
         length = cards.length;
+    for (i; i < length; i++) {
+        if (cards[0].id != id) {
+            cards[0].parentNode.removeChild(cards[0]);
+        }
+    }
+    // After removing other cards, get the name and id
     if (container === 'card-container') {
         leftSelect = true;
         leftPlayer = id.replace('card', '');
@@ -151,11 +121,6 @@ function cardFocus(container, id) {
         rightPlayer = id.replace('card', '');
         selectedPlayers.right[0] = div.querySelector('#full-name').innerText;
         selectedPlayers.right[1] = id;
-    }
-    for (i; i < length; i++) {
-        if (cards[i].id !== id) {
-            cards[i].style.display = 'none';
-        }
     }
     checkButton();
 }
@@ -170,7 +135,6 @@ function getPlayerStats() {
         })
             .then(function (response) {
                 response.json().then(function (data) {
-                    // selectedPlayers = data.data;
                     showPlayerStats(data.data);
 
                 })
@@ -183,15 +147,58 @@ function getPlayerStats() {
 function showPlayerStats(players) {
     console.log(players);
     if (players[0].player_id.toString() == leftPlayer) {
-        console.log('left container gets index 0');
+        createList(players, 0, 'stats-left', selectedPlayers["left"][0]);
     } else {
-        console.log('left container get index 1')
+        createList(players, 1, 'stats-left', selectedPlayers["left"][0]);
     }
     if (players[1].player_id.toString() == rightPlayer) {
-        console.log('right container gets index 1');
+        createList(players, 1, 'stats-right', selectedPlayers["right"][0]);
     } else {
-        console.log('right container get index 0')
+        createList(players, 0, 'stats-right', selectedPlayers["right"][0]);
     }
+}
+
+function createList(players, idx, ul, name) {
+    destroyList(ul);
+    var list = document.getElementById(ul);
+    var header = document.getElementById(ul + '-name');
+    header.innerHTML = name;
+    // TODO: Is there a way I can create a loop for this?
+    // Start with creating neccessary elements
+    var ast = createElement('li'),
+        gp = createElement('li'),
+        pts = createElement('li'),
+        mins = createElement('li'),
+        reb = createElement('li'),
+        fgPerc = createElement('li'),
+        stl = createElement('li'),
+        to = createElement('li'),
+        threePerc = createElement('li'),
+        blk = createElement('li');
+
+    // Add values to our elements
+    ast.innerHTML = 'Assists: ' + players[idx].ast;
+    gp.innerHTML = 'Games Played: ' + players[idx].games_played;
+    pts.innerHTML = 'Average Points: ' + players[idx].pts;
+    mins.innerHTML = 'Minutes Per Game: ' + players[idx].min;
+    reb.innerHTML = 'Rebounds Per Game: ' + players[idx].reb;
+    fgPerc.innerHTML = 'Field Goal Percentage: ' + Math.round(players[idx].fg_pct * 1000) / 10 + '%';
+    stl.innerHTML = 'Steals Per Game: ' + players[idx].stl;
+    to.innerHTML = 'Turnovers Per Game: ' + players[idx].turnover;
+    threePerc.innerHTML = '3 Point Percentage: ' + Math.round(players[idx].fg3_pct * 1000) / 10 + '%';
+    blk.innerHTML = 'Blocks Per Game: ' + players[idx].blk;
+
+    // Now append the created and filled elements
+    appendElement(list, ast);
+    appendElement(list, gp);
+    appendElement(list, pts);
+    appendElement(list, mins);
+    appendElement(list, reb);
+    appendElement(list, fgPerc);
+    appendElement(list, stl);
+    appendElement(list, to);
+    appendElement(list, threePerc);
+    appendElement(list, blk);
 }
 
 function checkButton() {
@@ -201,6 +208,29 @@ function checkButton() {
     } else {
         btn.className = 'primary fit';
     }
+}
+
+function addClass(el, className) {
+    el.className = className;
+    return el;
+}
+
+function changeId(el, id) {
+    el.id = id;
+    return el;
+}
+
+function createElement(el) {
+    return document.createElement(el)
+}
+
+function appendElement(parent, el) {
+    return parent.appendChild(el);
+}
+
+function destroyList(container) {
+    document.getElementById(container).innerHTML = '';
+    // console.log('destroy past results')
 }
 
 // get event listeners only when page loads
