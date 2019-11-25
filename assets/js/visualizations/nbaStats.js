@@ -56,8 +56,38 @@ function getStats(data, playerIdx) {
     return statData;
 }
 
+// data I actually want to show
+var stats = ['ast', 'blk', 'dreb', 'fg3m', 'fgm', 'fga', 'fta', 'ftm', 'oreb', 'pf', 'pts', 'reb', 'stl', 'turnover'];
+
+function getInitialStats(data) {
+    var i = 0,
+        j = 0,
+        keysStats = Object.keys(data[getPlayerNames(data)[0]]),
+        deleteIdx = [],
+        player1Name = getPlayerNames(data)[0],
+        player2Name = getPlayerNames(data)[1];
+    var player1Stats = data[player1Name],
+        player2Stats = data[player2Name];
+    
+    // We need to do this loops while we go through each player and write it back
+    // This remove the key value pairs not in our array
+    for (i; i < keysStats.length; i++) {
+        if (!(stats.indexOf(keysStats[i]) > -1)) {
+            deleteIdx.push(keysStats[i]);
+            // delete data[player1Name][keysStats[i]];
+            // delete data[player2Name][keysStats[i]];
+        }
+    }
+    for (j; j < deleteIdx.length; j++) {
+        delete player1Stats[deleteIdx[j]];
+        delete player2Stats[deleteIdx[j]];
+    }
+    return data
+}
+
 function paint(data) {
     var option = {
+        color: ['#5BC0EB', '#9BC53D'],
         title: {
             show: false,
             text: 'Player Comparison',
@@ -128,8 +158,7 @@ function paint(data) {
                 },
                 data: getStats(data, 1)
             }
-        ],
-        colors: ['#546570', '#c4ccd3']
+        ]
     };
 
     nbaChart.setOption(option);

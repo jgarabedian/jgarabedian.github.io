@@ -175,7 +175,7 @@ function showPlayerStats(players) {
         createList(players, 0, 'stats-right', selectedPlayers["right"][0]);
         chartData[selectedPlayers["right"][0]] = players[0];
     }
-    // removeSeason(chartData);
+    chartData = getInitialStats(chartData);
     paint(chartData);
 }
 
