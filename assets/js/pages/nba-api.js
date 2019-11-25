@@ -3,7 +3,10 @@ var leftSelect = false,
     leftPlayer = '',
     rightPlayer = '',
     rightSelect = false;
-var selectedPlayers = {};
+var selectedPlayers = {
+    left: [],
+    right: []
+};
 fetch("https://free-nba.p.rapidapi.com/games?Seasons=2019&page=0&per_page=25", {
     "method": "GET",
     "headers": {
@@ -56,6 +59,7 @@ function getPlayers(results, container) {
         // Add player name
         appendElement(playerName, p);
         p.innerHTML = `${player.first_name}` + ' ' + `${player.last_name}`;
+        p.id = 'full-name';
         // Add player height
         p = createElement('p');
         appendElement(playerStats, p);
@@ -139,10 +143,14 @@ function cardFocus(container, id) {
     if (container === 'card-container') {
         leftSelect = true;
         leftPlayer = id.replace('card', '');
+        selectedPlayers.left[0] = div.querySelector('#full-name').innerText;
+        selectedPlayers.left[1] = id;
     }
     if (container === 'card-container-right') {
         rightSelect = true;
         rightPlayer = id.replace('card', '');
+        selectedPlayers.right[0] = div.querySelector('#full-name').innerText;
+        selectedPlayers.right[1] = id;
     }
     for (i; i < length; i++) {
         if (cards[i].id !== id) {
@@ -162,12 +170,27 @@ function getPlayerStats() {
         })
             .then(function (response) {
                 response.json().then(function (data) {
-                    console.log(data.data);
-                    selectedPlayers = data.data;
+                    // selectedPlayers = data.data;
+                    showPlayerStats(data.data);
+
                 })
             })
     } else {
         console.log('You must select a player!');
+    }
+}
+
+function showPlayerStats(players) {
+    console.log(players);
+    if (players[0].player_id.toString() == leftPlayer) {
+        console.log('left container gets index 0');
+    } else {
+        console.log('left container get index 1')
+    }
+    if (players[1].player_id.toString() == rightPlayer) {
+        console.log('right container gets index 1');
+    } else {
+        console.log('right container get index 0')
     }
 }
 
