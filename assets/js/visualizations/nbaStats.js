@@ -89,7 +89,7 @@ function paint(data) {
     var option = {
         color: ['#5BC0EB', '#9BC53D'],
         title: {
-            show: false,
+            show: true,
             text: 'Player Comparison',
             textStyle: {
                 color: 'white',
@@ -106,7 +106,9 @@ function paint(data) {
             data: getPlayerNames(data),
             textStyle: {
                 color: 'white'
-            }
+            },
+            right: 0,
+            itemGap: 15
         },
         grid: {
             left: '3%',
@@ -120,6 +122,12 @@ function paint(data) {
                 show: true,
                 nameTextStyle: {
                     color: 'white'
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: 'white'
+                    }
                 }
             }
         ],
@@ -127,10 +135,16 @@ function paint(data) {
             {
                 type: 'category',
                 show: true,
-                name: 'Category',
                 axisLabel: {
                     show: true,
                     color: 'white'
+                },
+                axisLine: {
+                    show: true,
+                    width: 3,
+                    lineStyle: {
+                        color: 'white'
+                    }
                 },
                 axisTick: { show: true },
                 data: getCategories(data)
@@ -143,7 +157,7 @@ function paint(data) {
                 label: {
                     normal: {
                         show: true,
-                        position: 'inside'
+                        position: 'right'
                     }
                 },
                 data: getStats(data, 0)
@@ -153,7 +167,8 @@ function paint(data) {
                 type: 'bar',
                 label: {
                     normal: {
-                        show: true
+                        show: true,
+                        position: 'right'
                     }
                 },
                 data: getStats(data, 1)

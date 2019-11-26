@@ -175,8 +175,8 @@ function showPlayerStats(players) {
         createList(players, 0, 'stats-right', selectedPlayers["right"][0]);
         chartData[selectedPlayers["right"][0]] = players[0];
     }
-    chartData = getInitialStats(chartData);
-    paint(chartData);
+    data = getInitialStats(chartData);
+    paint(data);
 }
 
 function createList(players, idx, ul, name) {
